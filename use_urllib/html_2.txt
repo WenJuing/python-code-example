@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="哒哒去做，一个兴趣使然的个人小站。在这里你能找到很多二次元美图和有价值的博客，如果你也同时是动漫和编码爱好者，那你算来对地方了。">
+    <meta name="keywords" content="dada,dadagodo,哒哒,哒哒去做,文君博客,wenjuing博客,wenjuing,文君,炭治玟">
+    <meta name="baidu-site-verification" content="code-jY9gt4uh7Z" />
+    <title>一个充满好奇的小屋~(u‿ฺu✿ฺ)₎</title>
+    <link rel="stylesheet" href="/static/index/css/index.css"/>
+    <link rel="stylesheet" href="/static/index/css/return-top-button.css"/>
+    <script src="//at.alicdn.com/t/font_1905047_b5aiaiz453k.js"></script>
+    <!-- 引入EChart插件 -->
+    <script src="/static/extends/echarts-master/dist/echarts.min.js"></script>
+    <!-- 引入live2d插件 -->
+    <link rel="stylesheet" href="/static/extends/live2d_demo-master/assets/waifu.css"/>
+    <!-- 引入在线jQuery -->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- 引入jQuery UI -->
+    <link rel="stylesheet" href="/static/extends/jquery-ui-1.12.1/jquery-ui.css"/>
+    <script src="/static/extends/jquery-ui-1.12.1/jquery-ui.js"></script>
+</head>
+<body class="index">
+    <!-- 背景 -->
+    <div class="index-img"></div>
+    <!-- 加载扩展部分 -->
+    <!-- 看板娘 -->
+<div class="waifu">
+    <div class="waifu-tips"></div>
+    <canvas id="live2d" class="live2d"></canvas>
+    <div class="waifu-tool">
+        <span class="fui-home"></span>
+        <span class="fui-chat"></span>
+        <span class="fui-eye"></span>
+        <span class="fui-user"></span>
+        <span class="fui-photo"></span>
+        <span class="fui-info-circle"></span>
+        <span class="fui-cross"></span>
+    </div>
+</div>
+
+<script src="/static/extends/live2d_demo-master/assets/waifu-tips.js"></script>
+<script src="/static/extends/live2d_demo-master/assets/live2d.js"></script>
+
+<script type="text/javascript">
+    live2d_settings['modelId'] = 1;
+    live2d_settings['modelTexturesId'] = 87;
+    initModel("/static/extends/live2d_demo-master/assets/waifu-tips.json")
+</script>
+<!-- 返回顶部按钮 -->
+<div id="box" class="box">
+    <div class="box-in"></div>
+</div>    
+<script>
+var timer  = null;
+box.onclick = function(){
+    cancelAnimationFrame(timer);
+    //获取当前毫秒数
+    var startTime = +new Date();     
+    //获取当前页面的滚动高度
+    var b = document.body.scrollTop || document.documentElement.scrollTop;
+    var d = 500;
+    var c = b;
+    timer = requestAnimationFrame(function func(){
+        var t = d - Math.max(0,startTime - (+new Date()) + d);
+        document.documentElement.scrollTop = document.body.scrollTop = t * (-c) / d + b;
+        timer = requestAnimationFrame(func);
+        if(t == d){
+          cancelAnimationFrame(timer);
+        }
+    });
+}
+</script>
+    <!-- --------------------------------顶部导航栏---------------------------- -->
+    <div class="top" id="top">
+    <div class="web-name left"><a href="/index/index/index.html">dadagodo</a></div>
+    <div class="top-nav">
+        <ul class="top-nav1">
+        	<li>随笔</li>
+            <ul class="top-nav2"><li><a href="http://blog.dadagodo.com" target="_blank">博客</a></li></ul>
+        </ul>
+        <ul class="top-nav1">
+            <li>软件使用</li>
+            <ul class="top-nav2"><li>vscode</li><li>pr</li></ul>
+        </ul>
+        <ul class="top-nav1">
+            <li>资源库</li>
+            <ul class="top-nav2">
+                <li><a href="/index/acg/picture.html">动漫美图</a></li>
+            </ul>
+        </ul>
+        <ul class="top-nav1">
+            <li>技术馆</li>
+            <ul class="top-nav2">
+                <li><a href="/index/tech/index.html">烟花秀</a></li>
+            </ul>
+        </ul>
+        <ul class="top-nav1">
+            <li>我的战地</li>
+            <ul class="top-nav2">
+                <li><a href="https://www.bilibili.com/" target="_blank">B站</a></li>
+                <li><a href="https://www.zhihu.com/" target="_blank">知乎</a></li>
+                <li><a href="https://tieba.baidu.com/index.html" target="_blank">贴吧</a></li>
+                <li><a href="https://github.com/" target="_blank">Github</a></li>
+                <li><a href="/index/exam/index.html">学习天堂</a></li>
+            </ul>
+        </ul>
+        <ul class="top-nav1">
+            <li>其他</li>
+            <ul class="top-nav2">
+                <li><a href="/index/other/updatelog.html" target="_blank">更新日志</a></li>
+            </ul>
+        </ul>
+    </div>
+</div>
+    <!-- ----------------------------------主体--------------------------------------- -->
+    <div class="main left">
+    <!-- ----------------------------------视频区--------------------------------------- -->
+        <header class="header">
+            <svg class="icon icon-area" aria-hidden="true">
+                <use xlink:href="#icon-ziyuan"></use>
+            </svg>
+            视频区
+            <span class="everyday-add-sum" id="videoSum"></span>
+            <script>
+                var videoSum = 0;
+                if (videoSum != 0) 
+                    document.getElementById('videoSum').innerHTML = "+" + videoSum;
+            </script>
+        </header>
+                <a target="_blank" href="/index/index/showinfo/id/1.html" title="【1080p/感动/浪漫/AMV】雷姆，谢谢你一直以来的温柔相伴">
+        <div class="a-block left img-highlight">
+            <div class="img"><img src="/uploads/QQ图片20201007104107.png"></div>
+            <div class="hot">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-remen2"></use>
+                </svg>    
+                47            </div>
+            <div class="title limit2">【1080p/感动/浪漫/AMV】雷姆，谢谢你一直以来的温柔相伴</div>
+        </div>
+        </a>
+                <a target="_blank" href="/index/index/showinfo/id/3.html" title="投稿 致最好的02，谢谢你给我世界以色彩">
+        <div class="a-block left img-highlight">
+            <div class="img"><img src="/uploads/QQ图片20201007193821.png"></div>
+            <div class="hot">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-remen2"></use>
+                </svg>    
+                34            </div>
+            <div class="title limit2">投稿 致最好的02，谢谢你给我世界以色彩</div>
+        </div>
+        </a>
+                <a target="_blank" href="/index/index/showinfo/id/30.html" title="您必须看到的10个令人惊叹的CSS 3D效果">
+        <div class="a-block left img-highlight">
+            <div class="img"><img src="/uploads/5f8674db900b5.png"></div>
+            <div class="hot">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-remen2"></use>
+                </svg>    
+                29            </div>
+            <div class="title limit2">您必须看到的10个令人惊叹的CSS 3D效果</div>
+        </div>
+        </a>
+                <a target="_blank" href="/index/index/showinfo/id/29.html" title="2020 王道考研 数据结构">
+        <div class="a-block left img-highlight">
+            <div class="img"><img src="/uploads/5f867470b1e40.png"></div>
+            <div class="hot">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-remen2"></use>
+                </svg>    
+                21            </div>
+            <div class="title limit2">2020 王道考研 数据结构</div>
+        </div>
+        </a>
+                <a target="_blank" href="/index/index/showinfo/id/31.html" title="黑马程序员pink老师前端入门视频教程 HTML5+CSS3+移动端布局-flex布局rem布局响应式布局">
+        <div class="a-block left img-highlight">
+            <div class="img"><img src="/uploads/5f8675b29101e.png"></div>
+            <div class="hot">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-remen2"></use>
+                </svg>    
+                29            </div>
+            <div class="title limit2">黑马程序员pink老师前端入门视频教程 HTML5+CSS3+移动端布局-flex布局rem布局响应式布局</div>
+        </div>
+        </a>
+                <a target="_blank" href="/index/index/showinfo/id/32.html" title="【迄今为止最易懂】2分钟掌握 CSS Grid 布局">
+        <div class="a-block left img-highlight">
+            <div class="img"><img src="/uploads/60212e41e5e17.png"></div>
+            <div class="hot">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-remen2"></use>
+                </svg>    
+                29            </div>
+            <div class="title limit2">【迄今为止最易懂】2分钟掌握 CSS Grid 布局</div>
+        </div>
+        </a>
+                <!-- ----------------------------------------ACG|美图区----------------------------------------------------->
+        <div class="like-img" id="like_img">
+            <header class="header">
+                <svg class="icon icon-area" aria-hidden="true">
+                    <use xlink:href="#icon-tupian1"></use>
+                </svg>
+                美图区
+                <span class="everyday-add-sum" id="imgSum"></span>
+                <script>
+                    var imgSum = 0;
+                    if (imgSum != 0) 
+                        document.getElementById('imgSum').innerHTML = "+" + imgSum;
+                </script>
+            </header>
+            <div class="like-img-main">
+                                <a  title="卡牌" class="img-highlight" href="/index/acg/picturedetail/id/57.html">
+                <div class="like-img-block left">
+                    <img src="/uploads/607015672bfb1.jpg">
+                </div>
+            </a>
+                                <a  title="女仆" class="img-highlight" href="/index/acg/picturedetail/id/56.html">
+                <div class="like-img-block left">
+                    <img src="/uploads/60701525c1c24.jpg">
+                </div>
+            </a>
+                                <a  title="康纳吃东西" class="img-highlight" href="/index/acg/picturedetail/id/55.html">
+                <div class="like-img-block left">
+                    <img src="/uploads/607014d732d2b.gif">
+                </div>
+            </a>
+                                <a  title="可爱的大河" class="img-highlight" href="/index/acg/picturedetail/id/54.html">
+                <div class="like-img-block left">
+                    <img src="/uploads/60701484cd611.png">
+                </div>
+            </a>
+                                <a  title="少年" class="img-highlight" href="/index/acg/picturedetail/id/53.html">
+                <div class="like-img-block left">
+                    <img src="/uploads/605edde922578.jpg">
+                </div>
+            </a>
+                                <a  title="花瓣动画" class="img-highlight" href="/index/acg/picturedetail/id/51.html">
+                <div class="like-img-block left">
+                    <img src="/uploads/6055c5503b75a.gif">
+                </div>
+            </a>
+                                <a  title="剑圣" class="img-highlight" href="/index/acg/picturedetail/id/50.html">
+                <div class="like-img-block left">
+                    <img src="/uploads/6055897009b13.png">
+                </div>
+            </a>
+                                <a  title="幼年雷姆" class="img-highlight" href="/index/acg/picturedetail/id/49.html">
+                <div class="like-img-block left">
+                    <img src="/uploads/60557c5d11094.png">
+                </div>
+            </a>
+                                <a  title="可爱的头像2" class="img-highlight" href="/index/acg/picturedetail/id/48.html">
+                <div class="like-img-block left">
+                    <img src="/uploads/6054cb9d3fd61.jpg">
+                </div>
+            </a>
+                                <a  title="可爱的头像" class="img-highlight" href="/index/acg/picturedetail/id/47.html">
+                <div class="like-img-block left">
+                    <img src="/uploads/6054cb6bb6a12.jpeg">
+                </div>
+            </a>
+                            </div>
+        </div>
+    </div>
+    <!-- ---------------------------------站点访问量统计---------------------------------------------- -->
+    <div class="statistic left">
+        <div id="chart" class="chart"></div>
+        <script>
+            var myChart = echarts.init(document.getElementById('chart'));
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: '您是今天第'+15+'位访客',
+                    subtext:'历史访问'+1176+'人次',
+                    x:'center',
+                    itemGap:5,
+                    textStyle: {
+                        fontSize:15,
+                    }
+                },
+                tooltip: {},
+                legend: {
+                    data:['访问量'],
+                    y:'bottom',
+                },
+                xAxis: {
+                    data: ["04\/19","04\/20","04\/21","04\/22","04\/23","04\/24","04\/25"],
+                    // data: ['2/5','2/6']
+                },
+                yAxis: {},
+                series: [{
+                    name: '访问量',
+                    type: 'line',
+                    data: [31,21,16,17,17,15,14],
+                    // data:[3,8],
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: true, //开启显示
+                                position: 'top', //在上方显示
+                                textStyle: { //数值样式
+                                    color: 'black',
+                                    fontSize: 12
+                                }
+                            }
+                        }
+                    },
+            }]
+            };
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+    </div>
+    <!-- ---------------------------------右边导航栏---------------------------------------------- -->
+    <div class="hot-article left">
+        <div class="header">
+            <svg class="icon hot-click" aria-hidden="true">
+                <use xlink:href="#icon-remen"></use>
+            </svg>  
+            热门点击</div>
+        <div class="h-title">
+            <ul>
+                                <li><span class="rank">1</span><a target="_blank" href="/index/index/showinfo/id/1.html" title="【1080p/感动/浪漫/AMV】雷姆，谢谢你一直以来的温柔相伴">【1080p/感动/浪漫/AMV】雷姆，谢谢你一直以来的温柔相伴</a></li>
+                                <li><span class="rank">2</span><a target="_blank" href="/index/index/showinfo/id/3.html" title="投稿 致最好的02，谢谢你给我世界以色彩">投稿 致最好的02，谢谢你给我世界以色彩</a></li>
+                                <li><span class="rank">3</span><a target="_blank" href="/index/index/showinfo/id/30.html" title="您必须看到的10个令人惊叹的CSS 3D效果">您必须看到的10个令人惊叹的CSS 3D效果</a></li>
+                                <li><span class="rank">4</span><a target="_blank" href="/index/index/showinfo/id/31.html" title="黑马程序员pink老师前端入门视频教程 HTML5+CSS3+移动端布局-flex布局rem布局响应式布局">黑马程序员pink老师前端入门视频教程 HTML5+CSS3+移动端布局-flex布局rem布局响应式布局</a></li>
+                                <li><span class="rank">5</span><a target="_blank" href="/index/index/showinfo/id/32.html" title="【迄今为止最易懂】2分钟掌握 CSS Grid 布局">【迄今为止最易懂】2分钟掌握 CSS Grid 布局</a></li>
+                                <li><span class="rank">6</span><a target="_blank" href="/index/index/showinfo/id/29.html" title="2020 王道考研 数据结构">2020 王道考研 数据结构</a></li>
+                            </ul>
+        </div>
+    </div>
+    <!-- -----------------------------------------底部------------------------------------------- -->
+    <div class="bottom clean">
+    <div class="link-way">
+        <span class="qq">        
+            <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-linedesign-17"></use>
+            </svg>
+            <div class="qq-code left">
+                <img src="/static/index/img/qq_pic_merged_1612860805466.jpg">
+            </div>
+        </span>
+
+        <span class="weixin">
+        <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-weixin"></use>
+        </svg>
+        <div class="weixin-code left">
+            <img src="/static/index/img/weixin.png">
+        </div>
+        </span>
+
+        <a href="https://www.zhihu.com/people/wen-jun-56-18" target="_blank">
+        <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-shejiaotubiao-46"></use>
+        </svg>
+        </a>
+
+        <span class="twitter">
+        <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-tuite"></use>
+        </svg>
+        <div class="twitter-code left">
+            <img src="/static/index/img/twitter.jpg">
+        </div>
+        </span>
+        <a href="https://www.facebook.com/wenwen.tan.376" target="_blank">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-facebook"></use>
+            </svg>
+        </a>
+    </div>
+    <div class="connection">
+        <span>
+            &copy; 2021 dadagodo.com 版权所有 <a href="http://beian.miit.gov.cn">|ICP证：赣ICP备2020012354号-1</a>
+        </span>
+    </div>
+    <p style="text-align: center;margin-top: 40px;color: #bdc3c7;">时光滴答滴答，你，准备好了吗？哒哒去做吧~</p>
+</div>
+<span class="announce">
+    <h3>声明</h3>
+    本站为非盈利ACG资源美图转载分享和学习交流个人博客，不提供任何上传下载服务，所有内容免费阅读。
+    如果您发现本站某些资源或图片违规或侵犯了您的权益，
+    请将资源链接及违规内容通过底部联系方式进行联系，我收到后会在48小时内进行删除。
+</span>
+    <script src="/static/index/js/index.js" defer></script>
+    <script src="/static/extends/live2d_demo-master/assets/autoload.js"></script>
+</body>
+</html>

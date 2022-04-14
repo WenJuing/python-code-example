@@ -1,0 +1,2 @@
+scrapy crawl top250
+scrapy crawl book

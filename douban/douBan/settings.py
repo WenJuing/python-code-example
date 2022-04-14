@@ -68,8 +68,13 @@ DOWNLOADER_MIDDLEWARES = {
 #  开启下载管道
 ITEM_PIPELINES = {
     # 'douBan.pipelines.RankPipeline': 300,
-    'douBan.pipelines.Top250Pipeline': 200,
+    # 'douBan.pipelines.Top250Pipeline': 200,
+    # 'douBan.pipelines.Top250ImgPipeline': 100,
+    'douBan.pipelines.BookPipeline': 100,
+    # 'scrapy.pipelines.images.ImagesPipeline': 1,  # 开启图片管道
 }
+# 图片保存路径
+IMAGES_STORE = '../images'
 
 #  Enable and configure the AutoThrottle extension (disabled by default)
 #  See https://docs.scrapy.org/en/latest/topics/autothrottle.html

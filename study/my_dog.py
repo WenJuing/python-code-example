@@ -1,5 +1,5 @@
-from dog import Dog
-from dog import SmartDog
+# 从一个模块导入多个类
+from dog import Dog, SmartDog
 
 
 my_god = Dog('pitty', 3)
