@@ -45,5 +45,7 @@ print(users)
 show_names('jam')
 show_names('jam', 'koo', 'yxx')
 
-user = create_user('leimu', age=16, color='bule')
+data = {'age': 16, 'color': 'blue'}
+user = create_user('leimu', **data)
+# user = create_user('leimu', age=16, color='blue')
 print(user)

@@ -1,6 +1,11 @@
-import re
 
+a = list(range(1, 10))[::2]
+print(a)
 
-a = ['aaa / bbb / ccc']
-a = re.split('/', a[0])
-print(a[0])
+list1 = "hello"
+list2 = "!!!"
+list3 = list1 + list2
+print(list3)
+i = 999
+print("hello,{}".format(3))
+print("hello,{}".format(i))
