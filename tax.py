@@ -1,4 +1,3 @@
-
 a = list(range(1, 10))[::2]
 print(a)
 
@@ -9,3 +8,8 @@ print(list3)
 i = 999
 print("hello,{}".format(3))
 print("hello,{}".format(i))
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+c = a + b
+print(c)
