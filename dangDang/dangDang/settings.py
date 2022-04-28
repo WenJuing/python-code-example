@@ -1,4 +1,4 @@
-# Scrapy settings for xiaoShuo project
+# Scrapy settings for dangDang project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,17 +7,16 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'xiaoShuo'
+BOT_NAME = 'dangDang'
 
-SPIDER_MODULES = ['xiaoShuo.spiders']
-NEWSPIDER_MODULE = 'xiaoShuo.spiders'
-
+SPIDER_MODULES = ['dangDang.spiders']
+NEWSPIDER_MODULE = 'dangDang.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'xiaoShuo (+http://www.yourdomain.com)'
+#USER_AGENT = 'dangDang (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -25,7 +24,7 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -37,21 +36,25 @@ ROBOTSTXT_OBEY = True
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
+DEFAULT_REQUEST_HEADERS = {
+    'Accept':
+    'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language':
+    'en',
+    'User-Agent':
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'xiaoShuo.middlewares.XiaoshuoSpiderMiddleware': 543,
+#    'dangDang.middlewares.DangdangSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'xiaoShuo.middlewares.XiaoshuoDownloaderMiddleware': 543,
+#    'dangDang.middlewares.DangdangDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -62,10 +65,12 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'xiaoShuo.pipelines.XiaoshuoPipeline': 300,
-#}
-
+ITEM_PIPELINES = {
+    'dangDang.pipelines.DangdangPipeline': 300,
+    # 'scrapy.pipelines.images.ImagesPipeline': 1,  # 开启图片管道
+}
+# 图片保存路径
+IMAGES_STORE = '../images'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
