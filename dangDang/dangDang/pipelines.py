@@ -15,10 +15,12 @@
 from scrapy.pipelines.images import ImagesPipeline
 from scrapy.http.request import Request
 from scrapy.exceptions import DropItem
+from use_sql import useSql
 
 
 class DangdangPipeline(ImagesPipeline):
     def process_item(self, item, spider):
+        # 保存到文件
         with open("dangdang_books.txt", "a+", encoding="utf8") as file:
             file.write("--"+str(item['number'])+"-"*10+"\n")
             file.write("图书名称："+item['bookname'][0]+"\n")
@@ -29,6 +31,11 @@ class DangdangPipeline(ImagesPipeline):
             file.write("现价："+item['now_price'][0]+"\n")
             file.write("评论数："+str(item['discuss'][0])+"\n")
             file.write("推荐度："+item['recommend'][0]+"\n")
+        # 保存到数据库
+        admin = useSql('localhost', 'root', '123123', 'eshop')
+        sql = "insert into tempbooks values(null,'"+item['bookname'][0]+"','"+item['press'][0]+"','"+item['pubdate'][0]+"','"+item['origin_price'][0]+"','"+item['now_price'][0]+"','"+item['discuss'][0]+"','"+item['recommend'][0]+"')"
+        admin.insert_one(sql)
+        admin.close_all()
         return item
 
     # 重写get_media_requests方法是为了获取item
